@@ -1,7 +1,6 @@
-﻿namespace SimpleShop.Domain.Entities
+﻿namespace SimpleShop.Domain.Entities;
+
+public class User : Entity<Guid>
 {
-    public class User
-    {
-        
-    }
+    public string UserName { get; set; }
 }
