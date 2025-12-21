@@ -12,7 +12,7 @@ public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
 
     private readonly IDateTimeProvider _dateTimeProvider;
 
-    private DbSet<TEntity> DbSet => _dbContext.Set<TEntity>();
+    protected DbSet<TEntity> DbSet => _dbContext.Set<TEntity>();
 
     public IUnitOfWork UnitOfWork => _dbContext;
 
