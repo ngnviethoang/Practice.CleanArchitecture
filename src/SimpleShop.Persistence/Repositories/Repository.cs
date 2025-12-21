@@ -14,13 +14,13 @@ public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
 
     private DbSet<TEntity> DbSet => _dbContext.Set<TEntity>();
 
+    public IUnitOfWork UnitOfWork => _dbContext;
+
     public Repository(SimpleShopDbContext dbContext, IDateTimeProvider dateTimeProvider)
     {
         _dbContext = dbContext;
         _dateTimeProvider = dateTimeProvider;
     }
-
-    public IUnitOfWork UnitOfWork => _dbContext;
 
     public IQueryable<TEntity> GetQueryable()
     {
@@ -39,7 +39,7 @@ public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
         DbSet.Update(entity);
     }
 
-    public void Delete(TEntity entity)
+    public void Remove(TEntity entity)
     {
         entity.LastModificationTime = _dateTimeProvider.OffsetUtcNow;
         DbSet.Remove(entity);

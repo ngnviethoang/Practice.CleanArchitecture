@@ -13,7 +13,7 @@ public interface IRepository<TEntity, TKey>
 
     void Update(TEntity entity);
 
-    void Delete(TEntity entity);
+    void Remove(TEntity entity);
 
     Task<T?> FirstOrDefaultAsync<T>(IQueryable<T> queryable, CancellationToken cancellationToken = default);
 
