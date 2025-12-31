@@ -8,19 +8,18 @@ namespace SimpleShop.Persistence.Repositories;
 public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     where TEntity : Entity<TKey>
 {
-    private readonly SimpleShopDbContext _dbContext;
-
     private readonly IDateTimeProvider _dateTimeProvider;
-
-    protected DbSet<TEntity> DbSet => _dbContext.Set<TEntity>();
-
-    public IUnitOfWork UnitOfWork => _dbContext;
+    private readonly SimpleShopDbContext _dbContext;
 
     public Repository(SimpleShopDbContext dbContext, IDateTimeProvider dateTimeProvider)
     {
         _dbContext = dbContext;
         _dateTimeProvider = dateTimeProvider;
     }
+
+    protected DbSet<TEntity> DbSet => _dbContext.Set<TEntity>();
+
+    public IUnitOfWork UnitOfWork => _dbContext;
 
     public IQueryable<TEntity> GetQueryable()
     {

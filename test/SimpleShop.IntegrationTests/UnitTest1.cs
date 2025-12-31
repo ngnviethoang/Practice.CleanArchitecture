@@ -1,10 +1,9 @@
-﻿namespace SimpleShop.IntegrationTests
+﻿namespace SimpleShop.IntegrationTests;
+
+public class UnitTest1
 {
-    public class UnitTest1
+    [Fact]
+    public void Test1()
     {
-        [Fact]
-        public void Test1()
-        {
-        }
     }
 }

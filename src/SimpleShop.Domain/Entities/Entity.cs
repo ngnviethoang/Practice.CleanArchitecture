@@ -5,7 +5,7 @@ namespace SimpleShop.Domain.Entities;
 public abstract class Entity<TKey> : IHasKey<TKey>, IFullAuditedObject<TKey>, IHasRowVersion
 {
     public TKey Id { get; set; } = default!;
-
+    
     public DateTimeOffset CreationTime { get; set; }
 
     public TKey? CreatorId { get; set; }

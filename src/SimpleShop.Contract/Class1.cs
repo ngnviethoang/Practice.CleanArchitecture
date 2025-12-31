@@ -1,6 +1,5 @@
-﻿namespace SimpleShop.Contract
+﻿namespace SimpleShop.Contract;
+
+public class Class1
 {
-    public class Class1
-    {
-    }
 }

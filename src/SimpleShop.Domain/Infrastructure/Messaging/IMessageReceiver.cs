@@ -1,6 +1,6 @@
 ﻿namespace SimpleShop.Domain.Infrastructure.Messaging;
 
-public interface IMessageReceiver<TData>
+public interface IMessageReceiver<TConsumer, TData>
 {
     Task ReceiveAsync(CancellationToken cancellationToken = default);
 

@@ -1,6 +1,5 @@
-﻿namespace SimpleShop.Infrastructure
+﻿namespace SimpleShop.Infrastructure;
+
+public class Class1
 {
-    public class Class1
-    {
-    }
 }

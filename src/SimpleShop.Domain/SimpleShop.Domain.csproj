@@ -11,4 +11,8 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\SimpleShop.Contract\SimpleShop.Contract.csproj"/>
+    </ItemGroup>
+
 </Project>

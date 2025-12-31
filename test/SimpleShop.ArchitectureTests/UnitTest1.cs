@@ -1,10 +1,9 @@
-﻿namespace SimpleShop.ArchitectureTest
+﻿namespace SimpleShop.ArchitectureTest;
+
+public class UnitTest1
 {
-    public class UnitTest1
+    [Fact]
+    public void Test1()
     {
-        [Fact]
-        public void Test1()
-        {
-        }
     }
 }
