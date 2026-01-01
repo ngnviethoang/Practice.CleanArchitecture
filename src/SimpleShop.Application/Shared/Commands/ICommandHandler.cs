@@ -1,11 +1,9 @@
-﻿namespace SimpleShop.Application.Shared.Commands;
+﻿using SimpleShop.Application.Shared.Common;
 
-public interface ICommandHandler<in TCommand> where TCommand : ICommand
-{
-    Task HandleAsync(TCommand command, CancellationToken cancellationToken = default);
-}
+namespace SimpleShop.Application.Shared.Commands;
 
-public interface ICommandHandler<in TCommand, TResult> where TCommand : ICommand<TResult>
+public interface ICommandHandler<in TCommand, TResult> : IRequestHandler<TCommand, TResult>
+    where TCommand : ICommand<TResult>
 {
-    Task<TResult> HandleAsync(TCommand command, CancellationToken cancellationToken = default);
+    Task<TResult> HandleAsync(IRequest<TResult> command, CancellationToken cancellationToken = default);
 }

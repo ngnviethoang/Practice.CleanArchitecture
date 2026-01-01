@@ -73,7 +73,7 @@ public class CircuitBreakerManager : ICircuitBreakerManager, IDisposable
             CircuitBreakerId = circuitBreakerObject.Id,
             Status = circuitBreakerObject.Status,
             Succeeded = false,
-            CreationTime = _dateTimeProvider.UtcNow,
+            CreationTime = _dateTimeProvider.UtcNow
         });
 
         UpdateCircuitBreakerStatus(circuitBreaker, circuitBreaker.Status == CircuitStatus.HalfOpen, CircuitStatus.Open);

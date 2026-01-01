@@ -1,3 +1,5 @@
-﻿namespace SimpleShop.Application.Shared.Queries;
+﻿using SimpleShop.Application.Shared.Common;
 
-public interface IQuery<TResult>;
+namespace SimpleShop.Application.Shared.Queries;
+
+public interface IQuery<TResult> : IRequest<TResult>;

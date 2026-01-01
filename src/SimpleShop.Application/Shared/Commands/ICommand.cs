@@ -1,5 +1,5 @@
-﻿namespace SimpleShop.Application.Shared.Commands;
+﻿using SimpleShop.Application.Shared.Common;
 
-public interface ICommand;
+namespace SimpleShop.Application.Shared.Commands;
 
-public interface ICommand<TResult>;
+public interface ICommand<TResult> : IRequest<TResult>;
