@@ -1,10 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>WeTicket.Infrastructure</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\WeTicket.Domain\WeTicket.Domain.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Identity"/>
+    </ItemGroup>
 
 </Project>

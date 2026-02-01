@@ -1,3 +1,3 @@
 ﻿namespace WeTicket.Domain.Entities;
 
-public class User : Entity<Guid>;
+public class UserClaim : Entity<Guid>;
