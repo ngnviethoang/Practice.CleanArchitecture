@@ -1,0 +1,6 @@
+@WeTicket.WebAPI_HostAddress = http://localhost:5005
+
+GET {{WeTicket.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

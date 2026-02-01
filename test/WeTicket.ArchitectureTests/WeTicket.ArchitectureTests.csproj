@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <RootNamespace>WeTicket.ArchitectureTests</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="coverlet.collector"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+        <PackageReference Include="NetArchTest.Rules"/>
+        <PackageReference Include="xunit"/>
+        <PackageReference Include="xunit.runner.visualstudio"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\WeTicket.AppHost\WeTicket.AppHost.csproj"/>
+        <ProjectReference Include="..\..\src\WeTicket.Application\WeTicket.Application.csproj"/>
+        <ProjectReference Include="..\..\src\WeTicket.Blazor\WeTicket.Blazor.csproj"/>
+        <ProjectReference Include="..\..\src\WeTicket.Contract\WeTicket.Contract.csproj"/>
+        <ProjectReference Include="..\..\src\WeTicket.Domain\WeTicket.Domain.csproj"/>
+        <ProjectReference Include="..\..\src\WeTicket.Infrastructure\WeTicket.Infrastructure.csproj"/>
+        <ProjectReference Include="..\..\src\WeTicket.Migrator\WeTicket.Migrator.csproj"/>
+        <ProjectReference Include="..\..\src\WeTicket.Persistence\WeTicket.Persistence.csproj"/>
+        <ProjectReference Include="..\..\src\WeTicket.WebAPI\WeTicket.WebAPI.csproj"/>
+    </ItemGroup>
+
+</Project>
