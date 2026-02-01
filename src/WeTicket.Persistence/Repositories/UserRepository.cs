@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WeTicket.Contract.Providers;
+using WeTicket.Contract.Datetimes;
 using WeTicket.Domain.Entities;
 using WeTicket.Domain.Repositories;
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WeTicket.Contract.CircuitBreakers;
-using WeTicket.Contract.Providers;
+using WeTicket.Contract.Datetimes;
 
 namespace WeTicket.Persistence.CircuitBreakers;
 

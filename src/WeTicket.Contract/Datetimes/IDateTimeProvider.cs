@@ -1,4 +1,4 @@
-﻿namespace WeTicket.Contract.Providers;
+﻿namespace WeTicket.Contract.Datetimes;
 
 public interface IDateTimeProvider
 {

@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using WeTicket.Domain.Entities;
 using WeTicket.Domain.Repositories;
 
 namespace WeTicket.Persistence;
