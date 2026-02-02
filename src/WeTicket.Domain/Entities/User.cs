@@ -30,11 +30,11 @@ public class User : Entity<Guid>
 
     public int AccessFailedCount { get; set; }
 
-    public List<UserClaim> UserClaims { get; set; }
+    public ICollection<UserClaim> UserClaims { get; set; }
 
-    public List<UserLogin> UserLogins { get; set; }
+    public ICollection<UserLogin> UserLogins { get; set; }
 
-    public List<UserToken> UserTokens { get; set; }
+    public ICollection<UserToken> UserTokens { get; set; }
 
-    public List<Role> Roles { get; set; }
+    public ICollection<Role> Roles { get; set; }
 }

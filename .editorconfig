@@ -26,7 +26,7 @@ tab_width = 4
 
 dotnet_naming_rule.private_method_should_be_camelcase.severity = suggestion
 dotnet_naming_rule.private_method_should_be_camelcase.symbols = private_method
-dotnet_naming_rule.private_method_should_be_camelcase.style = camelcase
+dotnet_naming_rule.private_method_should_be_camelcase.style = pascalcase
 
 dotnet_naming_rule.private_or_internal_field_should_be__beginwithunderscore.severity = suggestion
 dotnet_naming_rule.private_or_internal_field_should_be__beginwithunderscore.symbols = private_or_internal_field
