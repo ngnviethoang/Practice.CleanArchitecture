@@ -19,10 +19,10 @@
 
     <ItemGroup>
         <ProjectReference Include="..\WeTicket.Domain\WeTicket.Domain.csproj"/>
+        <ProjectReference Include="..\WeTicket.Persistence\WeTicket.Persistence.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Migrations\"/>
         <Folder Include="Scripts\"/>
     </ItemGroup>
 </Project>

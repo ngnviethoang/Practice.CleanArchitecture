@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using WeTicket.Domain.Entities;
 using WeTicket.Domain.Repositories;
 
 namespace WeTicket.Persistence;
@@ -9,6 +8,10 @@ namespace WeTicket.Persistence;
 public class WeTicketDbContext : DbContext, IUnitOfWork
 {
     private IDbContextTransaction _dbContextTransaction;
+
+    public WeTicketDbContext(DbContextOptions<WeTicketDbContext> options) : base(options)
+    {
+    }
 
     public async Task<IDisposable> BeginTransactionAsync(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted, CancellationToken cancellationToken = default)
     {
