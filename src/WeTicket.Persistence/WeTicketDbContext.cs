@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using WeTicket.Domain.Repositories;
@@ -11,6 +12,12 @@ public class WeTicketDbContext : DbContext, IUnitOfWork
 
     public WeTicketDbContext(DbContextOptions<WeTicketDbContext> options) : base(options)
     {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(AssemblyReference.Assembly);
     }
 
     public async Task<IDisposable> BeginTransactionAsync(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted, CancellationToken cancellationToken = default)

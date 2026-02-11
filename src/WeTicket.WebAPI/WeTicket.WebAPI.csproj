@@ -12,7 +12,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\WeTicket.Contract\WeTicket.Contract.csproj" />
+        <ProjectReference Include="..\WeTicket.Contract\WeTicket.Contract.csproj"/>
+        <ProjectReference Include="..\WeTicket.Persistence\WeTicket.Persistence.csproj"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
 </Project>

@@ -1,17 +1,22 @@
 using System.Reflection;
 using DbUp;
 using DbUp.Engine;
+using Microsoft.EntityFrameworkCore;
 using WeTicket.Migrator.ConfigurationOptions;
 using WeTicket.Persistence;
 
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
-
 AppSettings appSettings = new();
 builder.Configuration.Bind(appSettings);
-builder.Services.AddPersistence(appSettings.ConnectionStrings["Default"]);
+builder.Services.AddDbContext<WeTicketDbContext>(options => options.UseSqlServer(appSettings.ConnectionStrings["Default"], sql =>
+    {
+        sql.MigrationsAssembly(Assembly.GetExecutingAssembly().GetName().Name);
+    }));
+IHost app = builder.Build();
+app.Run();
 
 /*
-IHost app = builder.Build();
+
 bool hasError = false;
 foreach ((string tenantName, string connectionString) in appSettings.ConnectionStrings)
 {

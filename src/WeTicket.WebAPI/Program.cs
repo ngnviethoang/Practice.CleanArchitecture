@@ -1,11 +1,15 @@
+using WeTicket.Persistence;
+using WeTicket.WebAPI.ConfigurationOptions;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+AppSettings appSettings = new();
+builder.Configuration.Bind(appSettings);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
+builder.Services.AddPersistence(appSettings.ConnectionStrings["Default"]);
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
