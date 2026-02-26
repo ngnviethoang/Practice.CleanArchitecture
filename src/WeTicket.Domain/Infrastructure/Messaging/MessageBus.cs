@@ -40,9 +40,9 @@ public class MessageBus : IMessageBus
                 foreach (Type handlerType in _consumers)
                 {
                     bool canHandleEvent = handlerType.GetInterfaces()
-                        .Any(x => x.IsGenericType
-                                  && x.GetGenericTypeDefinition() == typeof(IMessageConsumer<,>)
-                                  && x.GenericTypeArguments[0] == typeof(TConsumer) && x.GenericTypeArguments[1] == typeof(TData));
+                        .Any(i => i.IsGenericType
+                                  && i.GetGenericTypeDefinition() == typeof(IMessageConsumer<,>)
+                                  && i.GenericTypeArguments[0] == typeof(TConsumer) && i.GenericTypeArguments[1] == typeof(TData));
 
                     if (canHandleEvent)
                     {
@@ -83,7 +83,7 @@ public class MessageBus : IMessageBus
     internal static void AddConsumers(Assembly assembly, IServiceCollection services)
     {
         List<Type> types = assembly.GetTypes()
-            .Where(x => x.GetInterfaces().Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(IMessageConsumer<,>)))
+            .Where(i => i.GetInterfaces().Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(IMessageConsumer<,>)))
             .ToList();
 
         foreach (Type type in types)
@@ -97,7 +97,7 @@ public class MessageBus : IMessageBus
     internal static void AddOutboxMessagePublishers(Assembly assembly, IServiceCollection services)
     {
         List<Type> types = assembly.GetTypes()
-            .Where(x => x.GetInterfaces().Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(IOutboxMessagePublisher)))
+            .Where(i => i.GetInterfaces().Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(IOutboxMessagePublisher)))
             .ToList();
 
         foreach (Type type in types)

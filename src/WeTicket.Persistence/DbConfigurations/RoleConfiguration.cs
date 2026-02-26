@@ -9,6 +9,7 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
     public void Configure(EntityTypeBuilder<Role> builder)
     {
         builder.ToTable("Roles");
-        builder.HasIndex(x => x.NormalizedName).IsUnique();
+        builder.HasIndex(i => i.NormalizedName).IsUnique();
+        builder.HasMany(i => i.RoleClaims).WithOne().HasForeignKey(i => i.RoleId);
     }
 }

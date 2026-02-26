@@ -9,6 +9,6 @@ public class UserTokenConfiguration : IEntityTypeConfiguration<UserToken>
     public void Configure(EntityTypeBuilder<UserToken> builder)
     {
         builder.ToTable("UserTokens");
-        builder.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId);
+        builder.HasOne(i => i.User).WithMany().HasForeignKey(i => i.UserId);
     }
 }

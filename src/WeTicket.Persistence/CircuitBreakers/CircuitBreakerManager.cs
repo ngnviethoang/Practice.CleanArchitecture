@@ -83,8 +83,8 @@ public class CircuitBreakerManager : ICircuitBreakerManager, IDisposable
         if (circuitBreaker.Status == CircuitStatus.Closed)
         {
             DateTimeOffset sinceLastTime = _dateTimeProvider.OffsetNow - period;
-            int numberOfFailures = _dbContext.Set<CircuitBreakerLog>().Count(x => x.CircuitBreakerId == circuitBreakerObject.Id
-                                                                                  && !x.Succeeded && x.CreationTime >= sinceLastTime);
+            int numberOfFailures = _dbContext.Set<CircuitBreakerLog>().Count(i => i.CircuitBreakerId == circuitBreakerObject.Id
+                                                                                  && !i.Succeeded && i.CreationTime >= sinceLastTime);
             UpdateCircuitBreakerStatus(circuitBreaker, numberOfFailures >= maximumNumberOfFailures, CircuitStatus.Open);
 
             _dbContext.SaveChanges();
