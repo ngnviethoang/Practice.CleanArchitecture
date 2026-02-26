@@ -9,6 +9,5 @@ public class UserLoginConfiguration : IEntityTypeConfiguration<UserLogin>
     public void Configure(EntityTypeBuilder<UserLogin> builder)
     {
         builder.ToTable("UserLogins");
-        builder.HasOne(i => i.User).WithMany().HasForeignKey(i => i.UserId);
     }
 }

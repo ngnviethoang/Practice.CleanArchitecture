@@ -32,9 +32,9 @@ public class User : Entity<Guid>
 
     public ICollection<UserClaim> UserClaims { get; set; }
 
+    public ICollection<UserRole> UserRoles { get; set; }
+
     public ICollection<UserLogin> UserLogins { get; set; }
 
-    public ICollection<UserToken> UserTokens { get; set; }
-
-    public ICollection<Role> Roles { get; set; }
+    public ICollection<AuditLog> AuditLogs { get; set; }
 }

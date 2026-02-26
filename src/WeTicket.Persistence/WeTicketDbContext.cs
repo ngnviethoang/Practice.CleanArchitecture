@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using WeTicket.Domain.Repositories;
@@ -18,6 +17,12 @@ public class WeTicketDbContext : DbContext, IUnitOfWork
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(AssemblyReference.Assembly);
+    }
+
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    {
+        const int defaultMaxLength = 256;
+        configurationBuilder.Properties<string>().HaveMaxLength(defaultMaxLength);
     }
 
     public async Task<IDisposable> BeginTransactionAsync(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted, CancellationToken cancellationToken = default)

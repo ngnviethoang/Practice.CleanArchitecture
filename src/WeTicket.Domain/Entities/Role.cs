@@ -4,11 +4,5 @@ public class Role : Entity<Guid>
 {
     public string Name { get; set; }
 
-    public string NormalizedName { get; set; }
-
-    public string ConcurrencyStamp { get; set; }
-
-    public ICollection<RoleClaim> RoleClaims { get; set; }
-
-    public ICollection<User> Users { get; set; }
+    public ICollection<UserRole> UserRoles { get; set; }
 }
