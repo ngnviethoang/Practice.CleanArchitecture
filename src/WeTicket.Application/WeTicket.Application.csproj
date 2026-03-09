@@ -12,4 +12,9 @@
         <ProjectReference Include="..\WeTicket.Domain\WeTicket.Domain.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    </ItemGroup>
+
 </Project>

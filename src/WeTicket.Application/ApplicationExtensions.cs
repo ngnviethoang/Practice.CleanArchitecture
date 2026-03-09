@@ -1,5 +1,13 @@
-﻿namespace WeTicket.Application;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 
-public class ApplicationExtensions
+namespace WeTicket.Application;
+
+public static class ApplicationExtensions
 {
+    public static IServiceCollection AddApplicationService(this IServiceCollection services)
+    {
+        services.AddValidatorsFromAssembly(AssemblyReference.Assembly);
+        return services;
+    }
 }

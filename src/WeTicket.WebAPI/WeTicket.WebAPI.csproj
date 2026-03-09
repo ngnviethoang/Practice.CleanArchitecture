@@ -14,6 +14,7 @@
     <ItemGroup>
         <ProjectReference Include="..\WeTicket.Application\WeTicket.Application.csproj" />
         <ProjectReference Include="..\WeTicket.Contract\WeTicket.Contract.csproj"/>
+        <ProjectReference Include="..\WeTicket.Infrastructure\WeTicket.Infrastructure.csproj" />
         <ProjectReference Include="..\WeTicket.Persistence\WeTicket.Persistence.csproj"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
             <PrivateAssets>all</PrivateAssets>
