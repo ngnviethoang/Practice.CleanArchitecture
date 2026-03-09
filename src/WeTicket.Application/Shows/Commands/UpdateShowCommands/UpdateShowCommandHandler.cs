@@ -3,7 +3,7 @@ using WeTicket.Contract.Datetimes;
 using WeTicket.Domain.Entities;
 using WeTicket.Domain.Repositories;
 
-namespace WeTicket.Application.Shows.Commands.UpdateShowCommand;
+namespace WeTicket.Application.Shows.Commands.UpdateShowCommands;
 
 internal sealed class UpdateShowCommandHandler : ICommandHandler<UpdateShowCommand, Guid>
 {
