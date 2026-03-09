@@ -4,7 +4,7 @@ using WeTicket.Domain.Repositories;
 
 namespace WeTicket.Application.Shows.Queries.GetListShowQueries;
 
-internal class GetListShowQueryHandler : IQueryHandler<PagedQuery<List<ShowDto>>, List<ShowDto>>
+internal sealed class GetListShowQueryHandler : IQueryHandler<PagedQuery<ShowDto>, IEnumerable<ShowDto>>
 {
     private readonly IShowRepository _showRepository;
 
@@ -13,7 +13,7 @@ internal class GetListShowQueryHandler : IQueryHandler<PagedQuery<List<ShowDto>>
         _showRepository = showRepository;
     }
 
-    public async Task<List<ShowDto>> HandleAsync(PagedQuery<List<ShowDto>> request, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<ShowDto>> HandleAsync(PagedQuery<ShowDto> request, CancellationToken cancellationToken = default)
     {
         IQueryable<ShowDto> queryable = _showRepository
             .GetQueryable()

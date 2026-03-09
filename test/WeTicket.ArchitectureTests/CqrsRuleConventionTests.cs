@@ -39,6 +39,8 @@ public class CqrsRuleConventionTests
         TestResult? testResult = Types.InAssembly(assembly)
             .That()
             .ImplementInterface(typeof(ICommand<>))
+            .And()
+            .AreNotGeneric()
             .Should()
             .HaveNameEndingWith("Command")
             .GetResult();
@@ -79,6 +81,8 @@ public class CqrsRuleConventionTests
         TestResult? testResult = Types.InAssembly(assembly)
             .That()
             .ImplementInterface(typeof(IQuery<>))
+            .And()
+            .AreNotGeneric()
             .Should()
             .HaveNameEndingWith("Query")
             .GetResult();

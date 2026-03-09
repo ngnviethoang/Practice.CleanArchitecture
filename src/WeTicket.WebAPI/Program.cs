@@ -1,5 +1,5 @@
-using WeTicket.Infrastructure.DateTimes;
-using WeTicket.Infrastructure.Guids;
+using WeTicket.Application;
+using WeTicket.Infrastructure;
 using WeTicket.Persistence;
 using WeTicket.WebAPI.ConfigurationOptions;
 
@@ -9,9 +9,13 @@ builder.Configuration.Bind(appSettings);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi(); // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddPersistence(appSettings.ConnectionStrings["Default"]);
-builder.Services.AddDateTimeProvider();
-builder.Services.AddGuidProvider();
+builder.Services
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen();
+builder.Services
+    .AddPersistence(appSettings.ConnectionStrings["Default"])
+    .AddInfrastructure()
+    .AddApplication();
 
 WebApplication app = builder.Build();
 
@@ -19,6 +23,8 @@ WebApplication app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

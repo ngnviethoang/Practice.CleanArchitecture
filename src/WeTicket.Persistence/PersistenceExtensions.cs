@@ -7,11 +7,22 @@ namespace WeTicket.Persistence;
 
 public static class PersistenceExtensions
 {
-    public static IServiceCollection AddPersistence(this IServiceCollection services, string connectionString)
+    extension(IServiceCollection services)
     {
-        services
-            .AddDbContext<WeTicketDbContext>(options => options.UseSqlServer(connectionString))
-            .AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
-        return services;
+        public IServiceCollection AddPersistence(string connectionString)
+        {
+            services
+                .AddDbContext<WeTicketDbContext>(options => options.UseSqlServer(connectionString))
+                .AddRepositories();
+            return services;
+        }
+
+        public IServiceCollection AddRepositories()
+        {
+            services.AddScoped<IAuditLogRepository, AuditLogRepository>();
+            services.AddScoped<IShowRepository, ShowRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            return services;
+        }
     }
 }

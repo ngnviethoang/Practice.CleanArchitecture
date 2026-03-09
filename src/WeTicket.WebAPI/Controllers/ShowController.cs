@@ -22,7 +22,7 @@ public class ShowController : ControllerBase
     [HttpGet]
     public async Task<ActionResult> GetListAsync()
     {
-        ShowDto shows = await _dispatcher.DispatchAsync(new PagedQuery<ShowDto>
+        IEnumerable<ShowDto> shows = await _dispatcher.DispatchAsync(new PagedQuery<ShowDto>
         {
             PageSize = 10,
             PageNumber = 1
