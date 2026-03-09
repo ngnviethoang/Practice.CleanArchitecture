@@ -4,7 +4,7 @@ using WeTicket.Domain.Repositories;
 
 namespace WeTicket.Application.Shows.Queries.GetShowByIdQueries;
 
-internal class GetShowByIdQueryHandler : IQueryHandler<GetByIdQuery<ShowDto?>, ShowDto?>
+internal sealed class GetShowByIdQueryHandler : IQueryHandler<GetByIdQuery<ShowDto?>, ShowDto?>
 {
     private readonly IShowRepository _showRepository;
 

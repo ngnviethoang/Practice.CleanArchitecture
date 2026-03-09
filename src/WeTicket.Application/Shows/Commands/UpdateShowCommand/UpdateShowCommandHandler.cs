@@ -5,7 +5,7 @@ using WeTicket.Domain.Repositories;
 
 namespace WeTicket.Application.Shows.Commands.UpdateShowCommand;
 
-internal class UpdateShowCommandHandler : ICommandHandler<UpdateShowCommand, Guid>
+internal sealed class UpdateShowCommandHandler : ICommandHandler<UpdateShowCommand, Guid>
 {
     private readonly IShowRepository _showRepository;
     private readonly IDateTimeProvider _dateTimeProvider;

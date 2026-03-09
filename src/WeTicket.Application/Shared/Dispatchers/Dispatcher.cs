@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WeTicket.Application.Shared.Commands;
-using WeTicket.Application.Shared.Queries;
+using WeTicket.Application.Shared.Common;
 using WeTicket.Domain.Events;
 
 namespace WeTicket.Application.Shared.Dispatchers;
@@ -14,26 +13,15 @@ public class Dispatcher : IDispatcher
         _provider = provider;
     }
 
-    public async Task<TResult> DispatchAsync<TResult>(ICommand<TResult> command, CancellationToken cancellationToken = default)
+    public async Task<TResult> DispatchAsync<TResult>(IRequest<TResult> command, CancellationToken cancellationToken = default)
     {
-        Type commandHandlerType = typeof(ICommandHandler<,>);
-        Type typeResult = command.GetType().GetGenericArguments()[0];
-        Type[] commandTypeArgs = [command.GetType(), typeResult];
-        Type handlerType = commandHandlerType.MakeGenericType(commandTypeArgs);
-        ICommandHandler<ICommand<TResult>, TResult> handler = (ICommandHandler<ICommand<TResult>, TResult>)_provider.GetRequiredService(handlerType);
+        Type requestHandlerType = typeof(IRequestHandler<,>);
+        Type[] requestTypeArgs = [command.GetType(), typeof(TResult)];
+        Type handlerType = requestHandlerType.MakeGenericType(requestTypeArgs);
+        // TODO GetRequiredService by interface not handler class name
+        IRequestHandler<IRequest<TResult>, TResult> handler = (IRequestHandler<IRequest<TResult>, TResult>)_provider.GetRequiredService(handlerType);
 
         return await handler.HandleAsync(command, cancellationToken);
-    }
-
-    public async Task<TResult> DispatchAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken = default)
-    {
-        Type queryHandlerType = typeof(IQueryHandler<,>);
-        Type typeResult = query.GetType().GetGenericArguments()[0];
-        Type[] queryTypeArgs = [query.GetType(), typeResult];
-        Type handlerType = queryHandlerType.MakeGenericType(queryTypeArgs);
-        IQueryHandler<IQuery<TResult>, TResult> handler = (IQueryHandler<IQuery<TResult>, TResult>)_provider.GetRequiredService(handlerType);
-
-        return await handler.HandleAsync(query, cancellationToken);
     }
 
     public async Task DispatchAsync(IDomainEvent domainEvent, CancellationToken cancellationToken = default)

@@ -6,7 +6,7 @@ using WeTicket.Domain.Repositories;
 
 namespace WeTicket.Application.Shows.Commands.CreateShowCommands;
 
-internal class CreateShowCommandHandler : ICommandHandler<CreateShowCommand, Guid>
+internal sealed class CreateShowCommandHandler : ICommandHandler<CreateShowCommand, Guid>
 {
     private readonly IShowRepository _showRepository;
     private readonly IGuidProvider _guidProvider;
