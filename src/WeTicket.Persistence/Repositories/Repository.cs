@@ -44,6 +44,11 @@ public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
         DbSet.Remove(entity);
     }
 
+    public async Task<TEntity?> FindAsync(TKey id, CancellationToken cancellationToken = default)
+    {
+        return await DbSet.FindAsync([id], cancellationToken);
+    }
+
     public Task<T?> FirstOrDefaultAsync<T>(IQueryable<T?> queryable, CancellationToken cancellationToken = default)
     {
         return queryable.FirstOrDefaultAsync(cancellationToken);

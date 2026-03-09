@@ -2,7 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using WeTicket.Application.Shared.Commands;
 using WeTicket.Application.Shared.Dispatchers;
 using WeTicket.Application.Shared.Queries;
-using WeTicket.Application.Shows;
+using WeTicket.Application.Shows.Commands.CreateShowCommands;
+using WeTicket.Application.Shows.Commands.UpdateShowCommand;
 using WeTicket.Application.Shows.DTOs;
 
 namespace WeTicket.WebAPI.Controllers;
@@ -11,12 +12,10 @@ namespace WeTicket.WebAPI.Controllers;
 [Route("api/v1/shows")]
 public class ShowController : ControllerBase
 {
-    private readonly ILogger<ShowController> _logger;
     private readonly IDispatcher _dispatcher;
 
-    public ShowController(ILogger<ShowController> logger, IDispatcher dispatcher)
+    public ShowController(IDispatcher dispatcher)
     {
-        _logger = logger;
         _dispatcher = dispatcher;
     }
 
@@ -55,7 +54,7 @@ public class ShowController : ControllerBase
         return Ok(id);
     }
 
-    [HttpPut("{id:guid}")]
+    [HttpDelete("{id:guid}")]
     public async Task<ActionResult> DeleteAsync(Guid id)
     {
         await _dispatcher.DispatchAsync(new DeleteByIdCommand<Guid> { Id = id });
