@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace WeTicket.Application.Shows.Commands.UpdateShowCommand;
+namespace WeTicket.Application.Shows.Commands.UpdateShowCommands;
 
 public class UpdateShowCommandValidator : AbstractValidator<UpdateShowCommand>
 {

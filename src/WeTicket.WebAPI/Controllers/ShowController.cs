@@ -3,7 +3,7 @@ using WeTicket.Application.Shared.Commands;
 using WeTicket.Application.Shared.Dispatchers;
 using WeTicket.Application.Shared.Queries;
 using WeTicket.Application.Shows.Commands.CreateShowCommands;
-using WeTicket.Application.Shows.Commands.UpdateShowCommand;
+using WeTicket.Application.Shows.Commands.UpdateShowCommands;
 using WeTicket.Application.Shows.DTOs;
 
 namespace WeTicket.WebAPI.Controllers;

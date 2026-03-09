@@ -33,7 +33,7 @@ public class PerformanceDecorator<TRequest, TResult> : IRequestHandler<TRequest,
         if (elapsedMs > _slowRequestThresholdMs)
         {
             _logger.LogWarning(
-                "Long running request {RequestName} took {ElapsedMilliseconds} ms {@Request}",
+                "Long running request {@RequestName} took {ElapsedMilliseconds} ms {Request}",
                 requestName,
                 elapsedMs,
                 request
@@ -42,7 +42,7 @@ public class PerformanceDecorator<TRequest, TResult> : IRequestHandler<TRequest,
         else
         {
             _logger.LogInformation(
-                "Request {RequestName} completed in {ElapsedMilliseconds} ms",
+                "Request {@RequestName} completed in {ElapsedMilliseconds} ms",
                 requestName,
                 elapsedMs
             );
