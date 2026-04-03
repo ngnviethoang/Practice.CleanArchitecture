@@ -14,6 +14,8 @@ public abstract class Entity<TKey> : IHasKey<TKey>, IFullAuditedObject<TKey>, IH
 
     public TKey? LastModifierId { get; set; }
 
+    public bool IsDeleted { get; set; }
+
     [ConcurrencyCheck]
     public Guid RowVersion { get; set; }
 }

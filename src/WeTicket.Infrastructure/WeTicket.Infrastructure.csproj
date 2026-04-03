@@ -15,4 +15,8 @@
         <PackageReference Include="Microsoft.AspNetCore.Identity"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Logging\" />
+    </ItemGroup>
+
 </Project>
