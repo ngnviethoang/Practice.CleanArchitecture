@@ -1,6 +1,6 @@
-﻿namespace WeTicket.Domain.Entities;
+﻿namespace WeTicket.Domain.Entities.Abstracts;
 
-public interface IFullAuditedObject<TKey>
+public interface IFullAuditedObject<TKey> : ISoftDelete
 {
     DateTimeOffset CreationTime { get; set; }
 

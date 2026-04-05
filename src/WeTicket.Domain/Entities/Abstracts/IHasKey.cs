@@ -1,4 +1,4 @@
-﻿namespace WeTicket.Domain.Entities;
+﻿namespace WeTicket.Domain.Entities.Abstracts;
 
 public interface IHasKey<TKey>
 {

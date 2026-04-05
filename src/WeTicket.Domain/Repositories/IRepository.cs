@@ -1,4 +1,5 @@
 ﻿using WeTicket.Domain.Entities;
+using WeTicket.Domain.Entities.Abstracts;
 
 namespace WeTicket.Domain.Repositories;
 
@@ -16,7 +17,7 @@ public interface IRepository<TEntity, in TKey>
     void Remove(TEntity entity);
 
     Task<TEntity?> FindAsync(TKey id, CancellationToken cancellationToken = default);
-    
+
     Task<T?> FirstOrDefaultAsync<T>(IQueryable<T> queryable, CancellationToken cancellationToken = default);
 
     Task<List<T>> ToListAsync<T>(IQueryable<T> queryable, CancellationToken cancellationToken = default);

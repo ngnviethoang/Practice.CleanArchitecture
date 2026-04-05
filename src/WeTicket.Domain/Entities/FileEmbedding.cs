@@ -1,4 +1,6 @@
-﻿namespace WeTicket.Domain.Entities;
+﻿using WeTicket.Domain.Entities.Abstracts;
+
+namespace WeTicket.Domain.Entities;
 
 public class FileEmbedding : Entity<Guid>
 {

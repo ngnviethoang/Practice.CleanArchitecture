@@ -1,3 +1,5 @@
+using WeTicket.Domain.Entities.Abstracts;
+
 namespace WeTicket.Domain.Entities;
 
 public class User : Entity<Guid>

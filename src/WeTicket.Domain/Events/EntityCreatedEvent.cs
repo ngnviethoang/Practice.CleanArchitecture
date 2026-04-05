@@ -1,11 +1,12 @@
 ﻿using WeTicket.Domain.Entities;
+using WeTicket.Domain.Entities.Abstracts;
 
 namespace WeTicket.Domain.Events;
 
 public class EntityCreatedEvent<T> : IDomainEvent
     where T : Entity<Guid>
 {
-    public EntityCreatedEvent(T entity, DateTime eventDateTime)
+    public EntityCreatedEvent(T entity, DateTimeOffset eventDateTime)
     {
         Entity = entity;
         EventDateTime = eventDateTime;
@@ -13,5 +14,5 @@ public class EntityCreatedEvent<T> : IDomainEvent
 
     public T Entity { get; }
 
-    public DateTime EventDateTime { get; }
+    public DateTimeOffset EventDateTime { get; }
 }

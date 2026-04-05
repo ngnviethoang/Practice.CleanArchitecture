@@ -2,7 +2,7 @@
 
 namespace WeTicket.Application.Shows.Commands.CreateShowCommands;
 
-public class CreateShowCommandValidator : AbstractValidator<CreateShowCommand>
+internal sealed class CreateShowCommandValidator : AbstractValidator<CreateShowCommand>
 {
     public CreateShowCommandValidator()
     {
