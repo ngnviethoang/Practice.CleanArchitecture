@@ -13,7 +13,7 @@ builder.Services.AddDbContext<WeTicketDbContext>(options => options.UseSqlServer
 }));
 
 IHost app = builder.Build();
-app.Run();
+await app.RunAsync();
 
 /*
 

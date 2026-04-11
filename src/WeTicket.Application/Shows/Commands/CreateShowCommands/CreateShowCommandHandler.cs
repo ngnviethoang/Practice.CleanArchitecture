@@ -28,10 +28,7 @@ internal sealed class CreateShowCommandHandler : ICommandHandler<CreateShowComma
             StartTime = request.StartTime,
             EndTime = request.EndTime,
             Location = request.Location,
-            UserId = request.UserId,
-            CreationTime = _dateTimeProvider.OffsetUtcNow,
-            CreatorId = request.UserId,
-            RowVersion = _guidProvider.Create()
+            UserId = request.UserId
         };
 
         await _showRepository.AddAsync(show, cancellationToken);
