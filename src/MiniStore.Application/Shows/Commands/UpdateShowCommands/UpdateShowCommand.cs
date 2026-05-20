@@ -1,0 +1,18 @@
+﻿using MiniStore.Application.Shared.Commands;
+
+namespace MiniStore.Application.Shows.Commands.UpdateShowCommands;
+
+public class UpdateShowCommand : ICommand<Guid>
+{
+    public Guid Id { get; set; }
+
+    public string Name { get; set; }
+
+    public DateTimeOffset StartTime { get; set; }
+
+    public DateTimeOffset EndTime { get; set; }
+
+    public string Location { get; set; }
+
+    public Guid UserId { get; set; }
+}

@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <RootNamespace>MiniStore.ArchitectureTests</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="coverlet.collector"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+        <PackageReference Include="NetArchTest.Rules"/>
+        <PackageReference Include="xunit"/>
+        <PackageReference Include="xunit.runner.visualstudio">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\MiniStore.AppHost\MiniStore.AppHost.csproj"/>
+        <ProjectReference Include="..\..\src\MiniStore.Application\MiniStore.Application.csproj"/>
+        <ProjectReference Include="..\..\src\MiniStore.Blazor\MiniStore.Blazor.csproj"/>
+        <ProjectReference Include="..\..\src\MiniStore.Contract\MiniStore.Contract.csproj"/>
+        <ProjectReference Include="..\..\src\MiniStore.Domain\MiniStore.Domain.csproj"/>
+        <ProjectReference Include="..\..\src\MiniStore.Infrastructure\MiniStore.Infrastructure.csproj"/>
+        <ProjectReference Include="..\..\src\MiniStore.Migrator\MiniStore.Migrator.csproj"/>
+        <ProjectReference Include="..\..\src\MiniStore.Persistence\MiniStore.Persistence.csproj"/>
+        <ProjectReference Include="..\..\src\MiniStore.WebAPI\MiniStore.WebAPI.csproj"/>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+<Solution>
+    <Folder Name="/Solution Items/">
+        <File Path=".editorconfig"/>
+        <File Path=".gitignore"/>
+        <File Path="Directory.Build.props"/>
+        <File Path="Directory.Packages.props"/>
+    </Folder>
+    <Folder Name="/src/"/>
+    <Folder Name="/src/Core/">
+        <Project Path="src/MiniStore.Application/MiniStore.Application.csproj"/>
+        <Project Path="src/MiniStore.Contract/MiniStore.Contract.csproj"/>
+        <Project Path="src/MiniStore.Domain/MiniStore.Domain.csproj"/>
+    </Folder>
+    <Folder Name="/src/Infrastructure/">
+        <Project Path="src/MiniStore.Infrastructure/MiniStore.Infrastructure.csproj"/>
+        <Project Path="src/MiniStore.Persistence/MiniStore.Persistence.csproj"/>
+    </Folder>
+    <Folder Name="/src/Presentation/">
+        <Project Path="src/MiniStore.AppHost/MiniStore.AppHost.csproj"/>
+        <Project Path="src/MiniStore.Blazor/MiniStore.Blazor.csproj"/>
+        <Project Path="src/MiniStore.Migrator/MiniStore.Migrator.csproj"/>
+        <Project Path="src/MiniStore.WebAPI/MiniStore.WebAPI.csproj"/>
+    </Folder>
+    <Folder Name="/test/">
+        <Project Path="test/MiniStore.ArchitectureTests/MiniStore.ArchitectureTests.csproj"/>
+        <Project Path="test/MiniStore.IntegrationTests/MiniStore.IntegrationTests.csproj"/>
+    </Folder>
+</Solution>

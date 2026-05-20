@@ -1,0 +1,31 @@
+﻿using MiniStore.Application.Shared.Queries;
+using MiniStore.Application.Shows.DTOs;
+using MiniStore.Domain.Repositories;
+
+namespace MiniStore.Application.Shows.Queries.GetShowByIdQueries;
+
+internal sealed class GetShowByIdQueryHandler : IQueryHandler<GetByIdQuery<ShowDto?>, ShowDto?>
+{
+    private readonly IShowRepository _showRepository;
+
+    public GetShowByIdQueryHandler(IShowRepository showRepository)
+    {
+        _showRepository = showRepository;
+    }
+
+    public async Task<ShowDto?> HandleAsync(GetByIdQuery<ShowDto?> request, CancellationToken cancellationToken = default)
+    {
+        IQueryable<ShowDto> queryable = _showRepository
+            .GetQueryable()
+            .Select(show => new ShowDto
+            {
+                Id = show.Id,
+                StartTime = show.StartTime,
+                EndTime = show.EndTime,
+                UserId = show.UserId,
+                Location = show.Location,
+                Name = show.Name
+            });
+        return await _showRepository.FirstOrDefaultAsync(queryable, cancellationToken);
+    }
+}

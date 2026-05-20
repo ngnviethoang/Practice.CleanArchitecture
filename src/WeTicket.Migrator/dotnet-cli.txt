@@ -1,3 +1,0 @@
-cd ./src/WeTicket.Migrator
-dotnet ef migrations add Init --context WeTicketDbContext -o Migrations
-dotnet ef database update --context WeTicketDbContext
