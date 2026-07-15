@@ -1,0 +1,6 @@
+@MiniStore.IdentityServer_HostAddress = http://localhost:5136
+
+GET {{MiniStore.IdentityServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

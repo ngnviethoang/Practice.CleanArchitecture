@@ -1,4 +1,6 @@
-﻿namespace MiniStore.IdentityServer.UnitTests;
+﻿using Xunit;
+
+namespace MiniStore.IdentityServer.UnitTests;
 
 public class UnitTest1
 {

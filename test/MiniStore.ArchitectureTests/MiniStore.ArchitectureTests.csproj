@@ -24,7 +24,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\MiniStore.AppHost\MiniStore.AppHost.csproj"/>
         <ProjectReference Include="..\..\src\MiniStore.Application\MiniStore.Application.csproj"/>
         <ProjectReference Include="..\..\src\MiniStore.Blazor\MiniStore.Blazor.csproj"/>
         <ProjectReference Include="..\..\src\MiniStore.Contract\MiniStore.Contract.csproj"/>

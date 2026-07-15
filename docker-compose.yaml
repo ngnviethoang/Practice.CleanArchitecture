@@ -1,0 +1,17 @@
+﻿services:
+    postgres:
+        image: postgres:15.18-alpine
+        container_name: postgres
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: P@ssWord!
+            POSTGRES_DB: IdentityServer
+        ports:
+            - "5432:5432"
+    floci:
+        image: floci/floci:nightly
+        container_name: floci
+        ports:
+            - "4566:4566"
+        environment:
+            FLOCI_STORAGE_MODE: hybrid

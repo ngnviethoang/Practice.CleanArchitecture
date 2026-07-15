@@ -1,64 +1,30 @@
-using System.Globalization;
-using System.Text;
-using Duende.IdentityServer.Licensing;
-using MiniStore.IdentityServer;
-using Serilog;
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
-    .CreateBootstrapLogger();
-
-Log.Information("Starting up");
-
-try
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+/*
+builder.Services.AddDbContext<IdentityServerDbContext>(options =>
 {
-    WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+    options.UseNpgsql(builder.Configuration.GetConnectionString("IdentityServer"));
+    options.UseOpenIddict();
+});
 
-    WebApplication app = builder
-        .ConfigureLogging()
-        .ConfigureServices()
-        .ConfigurePipeline();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<IdentityServerDbContext>();
+builder.Services.AddOpenIddict().AddCore(options => { options.UseEntityFrameworkCore().UseDbContext<IdentityServerDbContext>(); });
+*/
 
-    // this seeding is only for the template to bootstrap the DB and users.
-    // in production you will likely want a different approach.
-    if (args.Contains("/seed"))
-    {
-        Log.Information("Seeding database...");
-        SeedData.EnsureSeedData(app);
-        Log.Information("Done seeding database. Exiting.");
-        return;
-    }
-
-    if (app.Environment.IsDevelopment())
-    {
-        _ = app.Lifetime.ApplicationStopping.Register(() =>
-        {
-            LicenseUsageSummary usage = app.Services.GetRequiredService<LicenseUsageSummary>();
-            Console.Write(Summary(usage));
-        });
-    }
-
-    app.Run();
-}
-catch (Exception ex) when (ex is not HostAbortedException)
+WebApplication app = builder.Build();
+if (app.Environment.IsDevelopment())
 {
-    Log.Fatal(ex, "Unhandled exception");
-}
-finally
-{
-    Log.Information("Shut down complete");
-    Log.CloseAndFlush();
+    app.MapOpenApi();
 }
 
-static string Summary(LicenseUsageSummary usage)
-{
-    StringBuilder sb = new();
-    _ = sb.AppendLine("IdentityServer Usage Summary:");
-    _ = sb.AppendLine(CultureInfo.InvariantCulture, $"  License: {string.Join(", ", usage.EntitledSkus)}");
-    string features = usage.FeaturesUsed.Count > 0 ? string.Join(", ", usage.FeaturesUsed) : "None";
-    _ = sb.AppendLine(CultureInfo.InvariantCulture, $"  Business and Enterprise Edition Features Used: {features}");
-    _ = sb.AppendLine(CultureInfo.InvariantCulture, $"  {usage.ClientsUsed.Count} Client Id(s) Used");
-    _ = sb.AppendLine(CultureInfo.InvariantCulture, $"  {usage.IssuersUsed.Count} Issuer(s) Used");
-
-    return sb.ToString();
-}
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
+app.MapDefaultControllerRoute();
+app.MapRazorPages();
+await app.RunAsync();
